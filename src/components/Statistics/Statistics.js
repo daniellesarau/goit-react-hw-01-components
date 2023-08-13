@@ -1,5 +1,6 @@
 import React from 'react';
 import css from './Statistics.module.css';
+import PropTypes from 'prop-types';
 
 export default function Statistics(title, stats) {
   return (
@@ -26,3 +27,13 @@ export default function Statistics(title, stats) {
     </section>
   );
 }
+
+Statistics.prototype = {
+  title: PropTypes.string,
+  stats: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      percentage: PropTypes.number.isRequired,
+    })
+  ).isRequired,
+};

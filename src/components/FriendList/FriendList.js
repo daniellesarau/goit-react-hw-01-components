@@ -1,5 +1,6 @@
 import React from 'react';
 import FriendListItem from '../FriendsListItem/FriendListItem';
+import PropTypes from 'prop-types';
 
 export default function FriendList({ friends }) {
   return (
@@ -15,3 +16,13 @@ export default function FriendList({ friends }) {
     </ul>
   );
 }
+
+FriendList.prototype = {
+  friends: PropTypes.arrayOf(
+    PropTypes.shape({
+      isOnline: PropTypes.bool,
+      avatar: PropTypes.string,
+      name: PropTypes.string,
+    })
+  ).isRequired,
+};
